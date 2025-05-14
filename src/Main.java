@@ -1,15 +1,28 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+package main;
+
+import Modelos.TarjetaCredito;
+import Modelos.PayPal;
+import Modelos.TransferenciaBancaria;
+
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        TarjetaCredito tarjeta = new TarjetaCredito(200);
+        PayPal paypal = new PayPal(400);
+        TransferenciaBancaria transferencia = new TransferenciaBancaria(100);
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+        System.out.println("\n--- Tarjeta de Crédito ---");
+        tarjeta.realizarPago(50);
+        tarjeta.reembolsarPago(20);
+        System.out.println("Saldo actual: $" + tarjeta);
+
+        System.out.println("\n--- PayPal ---");
+        paypal.realizarPago(50);
+        paypal.reembolsarPago(10);
+        System.out.println("Saldo actual: $" + paypal.getSaldoDisponible());
+
+        System.out.println("\n--- Transferencia Bancaria ---");
+        transferencia.realizarPago(60);
+        transferencia.reembolsarPago(15);
+        System.out.println("Saldo actual: $" + transferencia.getSaldoDisponible());
     }
 }
